@@ -1,0 +1,9 @@
+---
+title: "LLM local vs API cloud : arbitrages coût/confidentialité"
+date: 2025-01-15
+categories: [LLM, Privacy, Costing]
+image: ../images/llm-local.png
+---
+
+Comparatif **TCO** et **risques** entre un LLM local (LLaMa/Vigogne) et une API cloud.  
+Inclut un cadre d'aide à la décision : latence, coûts, volumétrie, gouvernance, exigences RGPD.

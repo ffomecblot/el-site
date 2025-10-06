@@ -1,0 +1,7 @@
+---
+title: "Prévisions hiérarchiques pour le secteur public"
+date: 2024-06-12
+---
+
+Slides (RevealJS) : [Télécharger](../assets/talks/forecasting-public.pdf)  
+Références : Hyndman & Athanasopoulos (Forecasting), Prophet notes, etc.

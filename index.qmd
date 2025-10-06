@@ -1,0 +1,16 @@
+---
+title: "Bienvenue"
+image: images/cover.png
+---
+
+> Directeur R&I, docteur en statistiques — 10 ans d'IA appliquée aux données publiques et privées.
+
+Ce site rassemble une sélection de mes travaux depuis 2014 : projets, modèles (NLP, séries temporelles), tableaux de bord, conférences et publications.  
+Il met l’accent sur **les résultats mesurables**, **les choix méthodologiques** et **la reproductibilité**.
+
+**Par où commencer ?**
+- 👉 **[Projets](/projects/)** — cas d’usage concrets, avec métriques.
+- 🚀 **[Shiny](/shiny/)** — galerie d’applications (liens démos).
+- ✍️ **[Articles](/posts/)** — billets techniques & retours d’expérience.
+- 🎤 **[Talks](/talks/)** — slides et références.
+- 📄 **[CV](/cv/)** — versions Corporate / Expert IA.

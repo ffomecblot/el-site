@@ -1,0 +1,16 @@
+---
+title: "Galerie Shiny"
+---
+
+> Démos hébergées (shinyapps.io / Posit Connect) ou iframes auto-hébergées.
+
+::: {.grid}
+::: {.g-col-12 .g-col-md-6}
+#### Pilotage social RH (demo)
+<iframe src="https://your-user.shinyapps.io/pilotage-social-demo" height="420" width="100%" frameborder="0"></iframe>
+:::
+::: {.g-col-12 .g-col-md-6}
+#### NLP — Classification CamemBERT
+<iframe src="https://your-user.shinyapps.io/nlp-camembert-demo" height="420" width="100%" frameborder="0"></iframe>
+:::
+:::

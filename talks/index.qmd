@@ -1,0 +1,7 @@
+---
+title: "Talks"
+listing:
+  contents: .
+  sort: "date desc"
+  type: default
+---

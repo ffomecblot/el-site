@@ -1,0 +1,41 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Benoît Sainct — Portfolio"
+  description: "IA, Data Science & R&D — 2014–2025"
+  site-url: https://example.github.io/portfolio
+  navbar:
+    left:
+      - text: "Projets"
+        href: projects/index.qmd
+      - text: "Shiny"
+        href: shiny/index.qmd
+      - text: "Articles"
+        href: posts/index.qmd
+      - text: "Talks"
+        href: talks/index.qmd
+      - text: "CV"
+        href: cv/index.qmd
+    right:
+      - icon: github
+        href: https://github.com/your-user
+      - icon: linkedin
+        href: https://www.linkedin.com/in/beno%C3%AEt-sainct-1649886b/
+  page-footer:
+    left: "© {year} Benoît Sainct"
+    right: "Built with Quarto"
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles/custom.scss
+    toc: true
+    code-copy: true
+    smooth-scroll: true
+
+execute:
+  freeze: auto

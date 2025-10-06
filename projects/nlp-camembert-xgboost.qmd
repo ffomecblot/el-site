@@ -1,0 +1,60 @@
+
+---
+title: "NLP — Classification CamemBERT + XGBoost/Random Forest"
+date: 2023-06-15
+categories: [NLP, Classification, CamemBERT]
+image: ../images/llm-local.png
+---
+
+### Problème
+Classer des libellés/textes **courts** issus d’applications métier publiques (qualité variable, orthographe bruitée).
+
+### Approche
+- Encodage **CamemBERT** (sentence-level embeddings), agrégation moyenne.
+- Classifieurs tabulaires (XGBoost / Random Forest) vs couche softmax fine-tunée (ablation).
+- Nettoyage minimal, robustesse à l’orthographe, **calibration** des probabilités (Platt).
+
+### Résultats
+- **+6 à +12 pts** F1-macro vs. TF‑IDF + LR selon jeux de données.
+- Temps d’inférence < 15 ms / texte (batch GPU → CPU quantisé).
+
+### Stack & Code (extrait en R)
+```r
+library(reticulate)
+transformers <- import("transformers")
+torch <- import("torch")
+
+tok <- transformers$AutoTokenizer$from_pretrained("camembert-base")
+model <- transformers$AutoModel$from_pretrained("camembert-base")
+
+encode_texts <- function(texts) {
+  enc <- tok(texts, padding=TRUE, truncation=TRUE, return_tensors="pt")
+  with_no_grad <- torch$no_grad()
+  with_no_grad$__enter__()
+  out <- model(**enc)
+  emb <- as.array(torch$mean(out$last_hidden_state, dim=1)$cpu()$numpy())
+  with_no_grad$__exit__(NULL, NULL, NULL)
+  emb
+}
+
+# Ensuite: XGBoost / ranger côté R
+```
+
+### Pipeline (targets)
+```r
+# analysis/nlp/_targets.R
+library(targets); library(tarchetypes)
+source("analysis/nlp/R/funs_nlp.R")
+tar_option_set(packages = c("dplyr","readr","xgboost","ranger","yardstick","text2vec"))
+
+list(
+  tar_target(raw_path, "data/nlp_sample.csv", format = "file"),
+  tar_target(nlp_df, nlp_read(raw_path)),
+  tar_target(nlp_emb, nlp_embed(nlp_df$text)),
+  tar_target(nlp_fit_xgb, nlp_train_xgb(nlp_emb, nlp_df$label)),
+  tar_target(nlp_metrics, nlp_eval(nlp_fit_xgb, nlp_emb, nlp_df$label))
+)
+```
+
+### Liens
+- Repo (privé/à anonymiser), article de blog (à venir), démo Shiny (si public).

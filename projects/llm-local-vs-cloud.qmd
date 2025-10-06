@@ -1,0 +1,35 @@
+
+---
+title: "LLM local (Vigogne / LLaMa‑3) — Confidentialité & Coûts"
+date: 2025-03-10
+categories: [LLM, Privacy, Costing]
+image: ../images/llm-local.png
+---
+
+### Problème
+Fournir des capacités de génération/assistance IA **on‑prem** dans un contexte de **données sensibles** (secteur public) et **contraintes de coûts**.
+
+### Approche
+- Déploiement d’un LLM **local** (Vigogne/LLaMa‑3), quantisation 4/8 bits.
+- RAG léger pour documents internes, journalisation et garde‑fous (prompts, évasion).
+- Bench latence/coûts vs. API cloud, **cadre RGPD** et gouvernance (logs, rôle DPO).
+
+### Résultats
+- **Réduction de coûts** (TCO) sur volumes élevés et **maîtrise des risques** (données).
+- Acculturation interne (formations) et modèles de prompts métier.
+
+### Stack & Code (extrait conceptuel)
+```r
+# Appel d'un modèle local via API HTTP
+httr::POST("http://localhost:11434/api/generate",
+  body = list(model="llama3", prompt="Votre consigne...", stream=FALSE),
+  encode = "json"
+) |> httr::content()
+```
+
+### Gouvernance & Sécurité
+- Journalisation, garde‑fous, revue périodique des prompts, listes d’exclusion.
+- Tests d’**hallucination** et d’**attaques prompt**; matrice de risques; procédures d’arrêt.
+
+### Liens
+- Note d’archi interne (à anonymiser), comparatif coût/latence (à publier), démo contrôlée.

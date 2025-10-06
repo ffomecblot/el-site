@@ -1,0 +1,7 @@
+---
+title: "CV"
+---
+
+- **Corporate / Direction Innovation** : [PDF](../assets/cv/CV_Benoit_Sainct_Corporate_modern.pdf)
+- **Expert IA / Data Science** : [PDF](../assets/cv/CV_Benoit_Sainct_ExpertIA_modern.pdf)
+- **Sources LaTeX altacv** : [Corporate](../assets/cv/CV_Benoit_Sainct_Corporate_altacv.tex), [Expert](../assets/cv/CV_Benoit_Sainct_ExpertIA_altacv.tex)

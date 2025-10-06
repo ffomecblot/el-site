@@ -1,0 +1,11 @@
+---
+title: "Projets"
+listing:
+  contents: .
+  sort: "date desc"
+  type: default
+  categories: true
+  image-height: 120
+---
+
+Sélection de projets. Chaque fiche détaille : **problème**, **approche**, **résultats**, **stack**, **code** (extraits) et **liens**.
