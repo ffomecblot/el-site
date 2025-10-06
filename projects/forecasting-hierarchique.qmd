@@ -16,7 +16,7 @@ Prévoir des séries **hiérarchiques** (n > 10k) multi-niveaux (national → r�
 - Surveillance du **drift** + réapprentissage programmé (mensuel).
 
 ### Résultats
-- **−25 % d’erreur** moyenne (MASE) vs. système existant, stabilité supérieure sur niveaux infra.
+- **−25 % d’erreur** moyenne (MASE) vs. système existant, stabilité supérieure sur niveaux infra.
 - Déploiement batch (R) + rapport Quarto automatique pour les décideurs.
 
 ### Stack & Code (extrait)

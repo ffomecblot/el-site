@@ -4,8 +4,8 @@ project:
 
 website:
   title: "Benoît Sainct — Portfolio"
-  description: "IA, Data Science & R&D — 2014–2025"
-  site-url: https://example.github.io/portfolio
+  description: "IA, Data Science & R&D"
+  site-url: https://github.com/ffomecblot/el-site
   navbar:
     left:
       - text: "Projets"
@@ -20,7 +20,7 @@ website:
         href: cv/index.qmd
     right:
       - icon: github
-        href: https://github.com/your-user
+        href: https://github.com/ffomecblot/
       - icon: linkedin
         href: https://www.linkedin.com/in/beno%C3%AEt-sainct-1649886b/
   page-footer:
