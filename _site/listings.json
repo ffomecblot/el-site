@@ -1,0 +1,22 @@
+[
+  {
+    "listing": "/talks/index.html",
+    "items": [
+      "/talks/forecasting-public.html"
+    ]
+  },
+  {
+    "listing": "/posts/index.html",
+    "items": [
+      "/posts/llm-local-vs-cloud.html"
+    ]
+  },
+  {
+    "listing": "/projects/index.html",
+    "items": [
+      "/projects/llm-local-vs-cloud.html",
+      "/projects/forecasting-hierarchique.html",
+      "/projects/nlp-camembert-xgboost.html"
+    ]
+  }
+]

@@ -24,7 +24,7 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/beno%C3%AEt-sainct-1649886b/
   page-footer:
-    left: "© {year} Benoît Sainct"
+    left: "© 2025 Benoît Sainct"
     right: "Built with Quarto"
 
 format:

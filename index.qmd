@@ -9,9 +9,13 @@ Ce site rassemble une sélection de mes travaux depuis 2014 : projets, modèles 
 Il met l’accent sur les résultats mesurables, les choix méthodologiques et la reproductibilité.
 
 **Par où commencer ?**
-- 👉 **[Projets](/projects/index.html)** — cas d’usage concrets, avec métriques.
-- 🚀 **[Shiny](/shiny/)** — galerie d’applications (liens démos).
-- ✍️ **[Articles](/posts/)** — billets techniques & retours d’expérience.
-- 🎤 **[Talks](/talks/)** — slides et références.
-- 📄 **[CV](/cv/)** — versions Corporate / Expert IA.
+* 👉 **[Projets](/projects/)** — cas d’usage concrets, avec métriques.
+* 🚀 **[Shiny](/shiny/)** — galerie d’applications (liens démos).
+* ✍️ **[Articles](/posts/)** — billets techniques & retours d’expérience.
+* 🎤 **[Talks](/talks/)** — slides et références.
+* 📄 **[CV](/cv/)** — versions Corporate / Expert IA.
 
+
+
+
+<!-- Utilisation de renv : https://rstudio.github.io/renv/articles/renv.html  -->

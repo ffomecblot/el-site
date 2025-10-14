@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-06-15">
 
-<title>Bienvenue – Benoît Sainct — Portfolio</title>
+<title>NLP — Classification CamemBERT + XGBoost/Random Forest – Benoît Sainct — Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,30 +21,65 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-da4503ffa3b1e3d5174b973e04fc2c11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d34bf5fa23929f33ad2b3f80c188d338.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-da4503ffa3b1e3d5174b973e04fc2c11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-da4503ffa3b1e3d5174b973e04fc2c11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d34bf5fa23929f33ad2b3f80c188d338.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-da4503ffa3b1e3d5174b973e04fc2c11.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles/custom.scss">
+<link rel="stylesheet" href="../styles/custom.scss">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -246,7 +282,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Benoît Sainct — Portfolio</span>
     </a>
   </div>
@@ -257,23 +293,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./projects/index.html"> 
+    <a class="nav-link" href="../projects/index.html"> 
 <span class="menu-text">Projets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./shiny/index.html"> 
+    <a class="nav-link" href="../shiny/index.html"> 
 <span class="menu-text">Shiny</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts/index.html"> 
+    <a class="nav-link" href="../posts/index.html"> 
 <span class="menu-text">Articles</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./talks/index.html"> 
+    <a class="nav-link" href="../talks/index.html"> 
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv/index.html"> 
+    <a class="nav-link" href="../cv/index.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -300,8 +336,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#problème" id="toc-problème" class="nav-link active" data-scroll-target="#problème">Problème</a></li>
+  <li><a href="#approche" id="toc-approche" class="nav-link" data-scroll-target="#approche">Approche</a></li>
+  <li><a href="#résultats" id="toc-résultats" class="nav-link" data-scroll-target="#résultats">Résultats</a></li>
+  <li><a href="#stack-code-extrait-en-r" id="toc-stack-code-extrait-en-r" class="nav-link" data-scroll-target="#stack-code-extrait-en-r">Stack &amp; Code (extrait en R)</a></li>
+  <li><a href="#pipeline-targets" id="toc-pipeline-targets" class="nav-link" data-scroll-target="#pipeline-targets">Pipeline (targets)</a></li>
+  <li><a href="#liens" id="toc-liens" class="nav-link" data-scroll-target="#liens">Liens</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -309,14 +356,25 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Bienvenue</h1>
-</div>
+<h1 class="title">NLP — Classification CamemBERT + XGBoost/Random Forest</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">NLP</div>
+    <div class="quarto-category">Classification</div>
+    <div class="quarto-category">CamemBERT</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 15, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -326,14 +384,69 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<blockquote class="blockquote">
-<p>Chef de service R&amp;D, docteur en statistiques — 11 ans d’IA appliquée aux données publiques et privées.</p>
-</blockquote>
-<p>Ce site rassemble une sélection de mes travaux depuis 2014 : projets, modèles (NLP, séries temporelles), tableaux de bord, conférences et publications. Il met l’accent sur les résultats mesurables, les choix méthodologiques et la reproductibilité.</p>
-<p><strong>Par où commencer ?</strong> * 👉 <strong><a href=".\projects/">Projets</a></strong> — cas d’usage concrets, avec métriques. * 🚀 <strong><a href=".\shiny/">Shiny</a></strong> — galerie d’applications (liens démos). * ✍️ <strong><a href=".\posts/">Articles</a></strong> — billets techniques &amp; retours d’expérience. * 🎤 <strong><a href=".\talks/">Talks</a></strong> — slides et références. * 📄 <strong><a href=".\cv/">CV</a></strong> — versions Corporate / Expert IA.</p>
-<!-- Utilisation de renv : https://rstudio.github.io/renv/articles/renv.html  -->
+<section id="problème" class="level3">
+<h3 class="anchored" data-anchor-id="problème">Problème</h3>
+<p>Classer des libellés/textes <strong>courts</strong> issus d’applications métier publiques (qualité variable, orthographe bruitée).</p>
+</section>
+<section id="approche" class="level3">
+<h3 class="anchored" data-anchor-id="approche">Approche</h3>
+<ul>
+<li>Encodage <strong>CamemBERT</strong> (sentence-level embeddings), agrégation moyenne.</li>
+<li>Classifieurs tabulaires (XGBoost / Random Forest) vs couche softmax fine-tunée (ablation).</li>
+<li>Nettoyage minimal, robustesse à l’orthographe, <strong>calibration</strong> des probabilités (Platt).</li>
+</ul>
+</section>
+<section id="résultats" class="level3">
+<h3 class="anchored" data-anchor-id="résultats">Résultats</h3>
+<ul>
+<li><strong>+6 à +12&nbsp;pts</strong> F1-macro vs.&nbsp;TF‑IDF + LR selon jeux de données.</li>
+<li>Temps d’inférence &lt; 15 ms / texte (batch GPU → CPU quantisé).</li>
+</ul>
+</section>
+<section id="stack-code-extrait-en-r" class="level3">
+<h3 class="anchored" data-anchor-id="stack-code-extrait-en-r">Stack &amp; Code (extrait en R)</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>transformers <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"transformers"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>torch <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"torch"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>tok <span class="ot">&lt;-</span> transformers<span class="sc">$</span>AutoTokenizer<span class="sc">$</span><span class="fu">from_pretrained</span>(<span class="st">"camembert-base"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> transformers<span class="sc">$</span>AutoModel<span class="sc">$</span><span class="fu">from_pretrained</span>(<span class="st">"camembert-base"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>encode_texts <span class="ot">&lt;-</span> <span class="cf">function</span>(texts) {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  enc <span class="ot">&lt;-</span> <span class="fu">tok</span>(texts, <span class="at">padding=</span><span class="cn">TRUE</span>, <span class="at">truncation=</span><span class="cn">TRUE</span>, <span class="at">return_tensors=</span><span class="st">"pt"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  with_no_grad <span class="ot">&lt;-</span> torch<span class="sc">$</span><span class="fu">no_grad</span>()</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  with_no_grad<span class="sc">$</span><span class="fu">__enter__</span>()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">model</span>(<span class="sc">**</span>enc)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  emb <span class="ot">&lt;-</span> <span class="fu">as.array</span>(torch<span class="sc">$</span><span class="fu">mean</span>(out<span class="sc">$</span>last_hidden_state, <span class="at">dim=</span><span class="dv">1</span>)<span class="sc">$</span><span class="fu">cpu</span>()<span class="sc">$</span><span class="fu">numpy</span>())</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  with_no_grad<span class="sc">$</span><span class="fu">__exit__</span>(<span class="cn">NULL</span>, <span class="cn">NULL</span>, <span class="cn">NULL</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  emb</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensuite: XGBoost / ranger côté R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="pipeline-targets" class="level3">
+<h3 class="anchored" data-anchor-id="pipeline-targets">Pipeline (targets)</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis/nlp/_targets.R</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(targets); <span class="fu">library</span>(tarchetypes)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"analysis/nlp/R/funs_nlp.R"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tar_option_set</span>(<span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"dplyr"</span>,<span class="st">"readr"</span>,<span class="st">"xgboost"</span>,<span class="st">"ranger"</span>,<span class="st">"yardstick"</span>,<span class="st">"text2vec"</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tar_target</span>(raw_path, <span class="st">"data/nlp_sample.csv"</span>, <span class="at">format =</span> <span class="st">"file"</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tar_target</span>(nlp_df, <span class="fu">nlp_read</span>(raw_path)),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tar_target</span>(nlp_emb, <span class="fu">nlp_embed</span>(nlp_df<span class="sc">$</span>text)),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tar_target</span>(nlp_fit_xgb, <span class="fu">nlp_train_xgb</span>(nlp_emb, nlp_df<span class="sc">$</span>label)),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tar_target</span>(nlp_metrics, <span class="fu">nlp_eval</span>(nlp_fit_xgb, nlp_emb, nlp_df<span class="sc">$</span>label))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="liens" class="level3">
+<h3 class="anchored" data-anchor-id="liens">Liens</h3>
+<ul>
+<li>Repo (privé/à anonymiser), article de blog (à venir), démo Shiny (si public).</li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -752,7 +865,7 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2025 Benoît Sainct</p>
+<p>© {year} Benoît Sainct</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -766,5 +879,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

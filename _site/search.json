@@ -4,6 +4,76 @@
     "href": "index.html",
     "title": "Bienvenue",
     "section": "",
-    "text": "Chef de service R&D, docteur en statistiques — 11 ans d’IA appliquée aux données publiques et privées.\n\nCe site rassemble une sélection de mes travaux depuis 2014 : projets, modèles (NLP, séries temporelles), tableaux de bord, conférences et publications. Il met l’accent sur les résultats mesurables, les choix méthodologiques et la reproductibilité.\nPar où commencer ? - 👉 Projets — cas d’usage concrets, avec métriques. - 🚀 Shiny — galerie d’applications (liens démos). - ✍️ Articles — billets techniques & retours d’expérience. - 🎤 Talks — slides et références. - 📄 CV — versions Corporate / Expert IA."
+    "text": "Chef de service R&D, docteur en statistiques — 11 ans d’IA appliquée aux données publiques et privées.\n\nCe site rassemble une sélection de mes travaux depuis 2014 : projets, modèles (NLP, séries temporelles), tableaux de bord, conférences et publications. Il met l’accent sur les résultats mesurables, les choix méthodologiques et la reproductibilité.\nPar où commencer ? * 👉 Projets — cas d’usage concrets, avec métriques. * 🚀 Shiny — galerie d’applications (liens démos). * ✍️ Articles — billets techniques & retours d’expérience. * 🎤 Talks — slides et références. * 📄 CV — versions Corporate / Expert IA."
+  },
+  {
+    "objectID": "talks/index.html",
+    "href": "talks/index.html",
+    "title": "Talks",
+    "section": "",
+    "text": "Prévisions hiérarchiques pour le secteur public\n\n\n\n\n\n\n\n\nJun 12, 2024\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "shiny/index.html",
+    "href": "shiny/index.html",
+    "title": "Galerie Shiny",
+    "section": "",
+    "text": "Démos hébergées (shinyapps.io / Posit Connect) ou iframes auto-hébergées.\n\n\n\nPilotage social RH (demo)\n\n\n\n\nNLP — Classification CamemBERT"
+  },
+  {
+    "objectID": "projects/llm-local-vs-cloud.html",
+    "href": "projects/llm-local-vs-cloud.html",
+    "title": "LLM local (Vigogne / LLaMa‑3) — Confidentialité & Coûts",
+    "section": "",
+    "text": "Problème\nFournir des capacités de génération/assistance IA on‑prem dans un contexte de données sensibles (secteur public) et contraintes de coûts.\n\n\nApproche\n\nDéploiement d’un LLM local (Vigogne/LLaMa‑3), quantisation 4/8 bits.\nRAG léger pour documents internes, journalisation et garde‑fous (prompts, évasion).\nBench latence/coûts vs. API cloud, cadre RGPD et gouvernance (logs, rôle DPO).\n\n\n\nRésultats\n\nRéduction de coûts (TCO) sur volumes élevés et maîtrise des risques (données).\nAcculturation interne (formations) et modèles de prompts métier.\n\n\n\nStack & Code (extrait conceptuel)\n# Appel d'un modèle local via API HTTP\nhttr::POST(\"http://localhost:11434/api/generate\",\n  body = list(model=\"llama3\", prompt=\"Votre consigne...\", stream=FALSE),\n  encode = \"json\"\n) |&gt; httr::content()\n\n\nGouvernance & Sécurité\n\nJournalisation, garde‑fous, revue périodique des prompts, listes d’exclusion.\nTests d’hallucination et d’attaques prompt; matrice de risques; procédures d’arrêt.\n\n\n\nLiens\n\nNote d’archi interne (à anonymiser), comparatif coût/latence (à publier), démo contrôlée."
+  },
+  {
+    "objectID": "projects/forecasting-hierarchique.html",
+    "href": "projects/forecasting-hierarchique.html",
+    "title": "Prévision hiérarchique à grande échelle",
+    "section": "",
+    "text": "Problème\nPrévoir des séries hiérarchiques (n &gt; 10k) multi-niveaux (national → région → département → établissement) pour fiabiliser le pilotage budgétaire et l’anticipation RH.\n\n\nApproche\n\nRéconciliation hiérarchique (bottom-up / MinT).\nBench ARIMA/ETS vs modèles ML (ranger, xgboost) pour signaux irréguliers.\nValidation bloc-temps, métriques MASE / sMAPE par niveau hiérarchique.\nSurveillance du drift + réapprentissage programmé (mensuel).\n\n\n\nRésultats\n\n−25 % d’erreur moyenne (MASE) vs. système existant, stabilité supérieure sur niveaux infra.\nDéploiement batch (R) + rapport Quarto automatique pour les décideurs.\n\n\n\nStack & Code (extrait)\n\nR : fable, hts, fabletools, yardstick, targets, tarchetypes\nSnippet :\n\nlibrary(fable)\nfc &lt;- df |&gt;\n  model(\n    ets = ETS(value ~ error(\"A\") + trend(\"A\") + season(\"A\"))\n  ) |&gt;\n  forecast(h = \"6 months\")\n\nPipeline targets ci-dessous.\n\n\n\nPipeline (targets)\n# analysis/time-series/_targets.R\nlibrary(targets); library(tarchetypes)\nsource(\"analysis/time-series/R/funs_ts.R\")\n\ntar_option_set(packages = c(\"dplyr\",\"readr\",\"fable\",\"fabletools\",\"tsibble\",\"yardstick\"))\n\nlist(\n  tar_target(raw_path, \"data/ts_sample.csv\", format = \"file\"),\n  tar_target(ts_data, ts_read(raw_path)),\n  tar_target(ts_split, ts_make_splits(ts_data)),\n  tar_target(ts_fit, ts_train(ts_split)),\n  tar_target(ts_fc, ts_forecast(ts_fit, h = 6)),\n  tar_target(ts_metrics, ts_eval(ts_fc, ts_split))\n)\n\n\nLiens\n\nSlides : (à venir) • Démo : (si public) • Rapport Quarto : (exemple à publier)"
+  },
+  {
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
+    "title": "Articles",
+    "section": "",
+    "text": "LLM local vs API cloud : arbitrages coût/confidentialité\n\n\n\nLLM\n\nPrivacy\n\nCosting\n\n\n\n\n\n\n\n\n\nJan 15, 2025\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "cv/index.html",
+    "href": "cv/index.html",
+    "title": "CV",
+    "section": "",
+    "text": "Corporate / Direction Innovation : PDF\nExpert IA / Data Science : PDF\nSources LaTeX altacv : Corporate, Expert"
+  },
+  {
+    "objectID": "posts/llm-local-vs-cloud.html",
+    "href": "posts/llm-local-vs-cloud.html",
+    "title": "LLM local vs API cloud : arbitrages coût/confidentialité",
+    "section": "",
+    "text": "Comparatif TCO et risques entre un LLM local (LLaMa/Vigogne) et une API cloud.\nInclut un cadre d’aide à la décision : latence, coûts, volumétrie, gouvernance, exigences RGPD."
+  },
+  {
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projets",
+    "section": "",
+    "text": "Sélection de projets. Chaque fiche détaille : problème, approche, résultats, stack, code (extraits) et liens.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLLM local (Vigogne / LLaMa‑3) — Confidentialité & Coûts\n\n\n\nLLM\n\nPrivacy\n\nCosting\n\n\n\n\n\n\n\n\n\nMar 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPrévision hiérarchique à grande échelle\n\n\n\nTime Series\n\nForecasting\n\nPublic Sector\n\n\n\n\n\n\n\n\n\nOct 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nNLP — Classification CamemBERT + XGBoost/Random Forest\n\n\n\nNLP\n\nClassification\n\nCamemBERT\n\n\n\n\n\n\n\n\n\nJun 15, 2023\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/nlp-camembert-xgboost.html",
+    "href": "projects/nlp-camembert-xgboost.html",
+    "title": "NLP — Classification CamemBERT + XGBoost/Random Forest",
+    "section": "",
+    "text": "Problème\nClasser des libellés/textes courts issus d’applications métier publiques (qualité variable, orthographe bruitée).\n\n\nApproche\n\nEncodage CamemBERT (sentence-level embeddings), agrégation moyenne.\nClassifieurs tabulaires (XGBoost / Random Forest) vs couche softmax fine-tunée (ablation).\nNettoyage minimal, robustesse à l’orthographe, calibration des probabilités (Platt).\n\n\n\nRésultats\n\n+6 à +12 pts F1-macro vs. TF‑IDF + LR selon jeux de données.\nTemps d’inférence &lt; 15 ms / texte (batch GPU → CPU quantisé).\n\n\n\nStack & Code (extrait en R)\nlibrary(reticulate)\ntransformers &lt;- import(\"transformers\")\ntorch &lt;- import(\"torch\")\n\ntok &lt;- transformers$AutoTokenizer$from_pretrained(\"camembert-base\")\nmodel &lt;- transformers$AutoModel$from_pretrained(\"camembert-base\")\n\nencode_texts &lt;- function(texts) {\n  enc &lt;- tok(texts, padding=TRUE, truncation=TRUE, return_tensors=\"pt\")\n  with_no_grad &lt;- torch$no_grad()\n  with_no_grad$__enter__()\n  out &lt;- model(**enc)\n  emb &lt;- as.array(torch$mean(out$last_hidden_state, dim=1)$cpu()$numpy())\n  with_no_grad$__exit__(NULL, NULL, NULL)\n  emb\n}\n\n# Ensuite: XGBoost / ranger côté R\n\n\nPipeline (targets)\n# analysis/nlp/_targets.R\nlibrary(targets); library(tarchetypes)\nsource(\"analysis/nlp/R/funs_nlp.R\")\ntar_option_set(packages = c(\"dplyr\",\"readr\",\"xgboost\",\"ranger\",\"yardstick\",\"text2vec\"))\n\nlist(\n  tar_target(raw_path, \"data/nlp_sample.csv\", format = \"file\"),\n  tar_target(nlp_df, nlp_read(raw_path)),\n  tar_target(nlp_emb, nlp_embed(nlp_df$text)),\n  tar_target(nlp_fit_xgb, nlp_train_xgb(nlp_emb, nlp_df$label)),\n  tar_target(nlp_metrics, nlp_eval(nlp_fit_xgb, nlp_emb, nlp_df$label))\n)\n\n\nLiens\n\nRepo (privé/à anonymiser), article de blog (à venir), démo Shiny (si public)."
+  },
+  {
+    "objectID": "talks/forecasting-public.html",
+    "href": "talks/forecasting-public.html",
+    "title": "Prévisions hiérarchiques pour le secteur public",
+    "section": "",
+    "text": "Slides (RevealJS) : Télécharger\nRéférences : Hyndman & Athanasopoulos (Forecasting), Prophet notes, etc."
   }
 ]
